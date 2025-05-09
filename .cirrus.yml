@@ -26,5 +26,5 @@ task:
     clone_project_script:
     - git config --global user.email "techprosignature@icloud.com"
     - git config --global user.name "TechPro"
-    - repo init -u https://github.com/BlissOS/platform_manifest.git -b universe-x86 --git-lfs -y
+    - repo init -u https://github.com/BlissOS/platform_manifest.git -b universe-x86 --git-lfs
     - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
