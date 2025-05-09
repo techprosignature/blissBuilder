@@ -1,0 +1,12 @@
+task:
+    # Basic metadata:
+    name: 
+    only_if: true
+
+    # The build machine:
+    container:
+        image: debian:latest
+
+    # No environment variables provided.
+
+    First_script_script: uname -a
