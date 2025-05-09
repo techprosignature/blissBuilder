@@ -17,14 +17,19 @@ task:
     - apt install dpkg -y
     - dpkg --add-architecture i386
     - apt update
-    - apt install curl build-essential -y
+    - apt install git-core gnupg flex bison gperf zip zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386  lib32ncurses-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip squashfs-tools python3-mako libssl-dev ninja-build lunzip syslinux syslinux-utils gettext genisoimage gettext bc xorriso xmlstarlet meson glslang-tools git-lfs libncurses6 libncurses6:i386 libelf-dev aapt zstd rdfind nasm repo -y
     - apt remove rustc bindgen cargo -y
     - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup_setup.sh
     - bash rustup_setup.sh -y; $HOME/.cargo/bin/cargo install cargo-ndk; $HOME/.cargo/bin/rustup target add x86_64-linux-android i686-linux-android; $HOME/.cargo/bin/cargo install --version 0.69.1 bindgen-cli; $HOME/.cargo/bin/cargo install cbindgen
-    - apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386  lib32ncurses-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip squashfs-tools python3-mako libssl-dev ninja-build lunzip syslinux syslinux-utils gettext genisoimage gettext bc xorriso xmlstarlet meson glslang-tools git-lfs libncurses6 libncurses6:i386 libelf-dev aapt zstd rdfind nasm repo -y
 
     clone_project_script:
     - git config --global user.email "techprosignature@icloud.com"
     - git config --global user.name "TechPro"
     - repo init -u https://github.com/BlissOS/platform_manifest.git -b universe-x86 --git-lfs
     - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
+    - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
+
+    build_project_script:
+    - . build/envsetup.sh
+    - lunch bliss_x86_64-ap1a-userdebug
+    - make iso_img
