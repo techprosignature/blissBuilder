@@ -1,6 +1,6 @@
 task:
     # Basic metadata:
-    name: 
+    name: MyFirstTask
     only_if: true
 
     # The build machine:
@@ -9,4 +9,5 @@ task:
 
     # No environment variables provided.
 
-    First_script_script: uname -a
+    # Instructions:
+    MyFirstScript_script: uname -a
