@@ -17,6 +17,7 @@ task:
     - apt install dpkg -y
     - dpkg --add-architecture i386
     - apt update
+    - apt install curl -y
     - apt remove rustc bindgen cargo -y
     - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup_setup.sh
     - bash rustup_setup.sh -y
