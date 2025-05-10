@@ -14,6 +14,7 @@ task:
     # Instructions:
     install_dependencies_script:
     - uname -a
+    - nproc --all
     - apt install dpkg -y
     - dpkg --add-architecture i386
     - apt update
