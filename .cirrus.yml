@@ -6,8 +6,8 @@ task:
     # The build machine:
     container:
         image: ubuntu:latest
-        cpu: 8
-        memory: 32GB
+        cpu: 32
+        memory: 128GB
 
     # No environment variables provided.
 
